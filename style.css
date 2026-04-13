@@ -1,16 +1,15 @@
-/* --- 1. 核心变量与字体 --- */
+/* --- 1. 字体与基础定义 --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root {
     --primary: #000000;
-    --accent: #0071e3;       /* 苹果官网蓝 */
-    --text-sub: #86868b;    /* 苹果官网副标题灰色 */
+    --accent: #0071e3;
+    --text-sub: #86868b;
     --bg-light: #fbfbfb;
     --glass: rgba(255, 255, 255, 0.75);
-    --transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+    --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* --- 2. 基础重置 --- */
 * {
     margin: 0;
     padding: 0;
@@ -18,23 +17,24 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
     color: var(--primary);
     background: #ffffff;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* 彻底消除左右滑动条 */
 }
 
-/* --- 3. 悬浮胶囊导航栏 --- */
+/* --- 2. 导航栏 (响应式胶囊) --- */
 nav {
     position: fixed;
-    top: 24px; 
+    top: 24px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%; 
+    width: 90%;
     max-width: 1100px;
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 24px;
     background: var(--glass);
@@ -55,7 +55,7 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 32px;
+    gap: 24px;
 }
 
 .nav-links a {
@@ -69,6 +69,7 @@ nav {
 
 .nav-links a:hover {
     opacity: 1;
+    color: var(--accent);
 }
 
 #lang-btn {
@@ -80,15 +81,10 @@ nav {
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    flex-shrink: 0;
 }
 
-#lang-btn:hover {
-    background: var(--accent);
-    transform: scale(1.05);
-}
-
-/* --- 4. 大气 Hero 区块 --- */
+/* --- 3. 首页 Hero 区块 --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -97,32 +93,26 @@ nav {
     align-items: center;
     padding: 0 10%;
     overflow: hidden;
-    background: #fff;
 }
 
-/* 背景图容器：占据右侧 */
 .hero-bg {
     position: absolute;
     top: 0;
     right: 0;
-    width: 75%; /* 占据右侧大半部分 */
+    width: 75%;
     height: 100%;
     background: url('image/lab.png') no-repeat center center;
     background-size: cover;
     z-index: 1;
 }
 
-/* 核心：白色渐变遮罩层，实现左侧留白效果 */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        #ffffff 25%,               /* 左侧纯白区域 */
-        rgba(255, 255, 255, 0.8) 45%, 
-        rgba(255, 255, 255, 0) 85%); /* 向右平滑透明 */
+    background: linear-gradient(90deg, #ffffff 25%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0) 85%);
     z-index: 2;
 }
 
@@ -133,96 +123,98 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -0.04em;
     margin-bottom: 24px;
 }
 
-.hero-content p {
-    font-size: 1.25rem;
-    color: var(--text-sub);
-    max-width: 480px;
-    margin-bottom: 32px;
-}
-
-/* --- 5. 产品卡片 (Key Solutions) --- */
+/* --- 4. 通用列表与网格 --- */
 .section {
-    padding: 120px 10%;
-    background: #ffffff;
-}
-
-.section-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 60px;
-    letter-spacing: -0.02em;
+    padding: 80px 10%;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
 }
 
 .card {
     background: var(--bg-light);
-    padding: 48px 40px;
+    padding: 40px;
     border-radius: 24px;
     border: 1px solid #f2f2f2;
     transition: var(--transition);
 }
 
-.card:hover {
-    background: #ffffff;
-    border-color: #e5e5e7;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-    transform: translateY(-8px);
-}
+/* --- 5. 手机端 (Mobile) 适配逻辑 --- */
+@media (max-width: 768px) {
+    /* 导航栏不再消失，而是优化布局 */
+    nav {
+        top: 12px;
+        width: 95%;
+        padding: 8px 16px;
+        gap: 10px;
+    }
 
-.card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-}
+    .logo-container img {
+        height: 20px;
+    }
 
-.card p {
-    color: var(--text-sub);
-    font-size: 1rem;
-    line-height: 1.6;
+    .nav-links {
+        gap: 12px;
+        overflow-x: auto; /* 允许横向滑动菜单 */
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; } /* 隐藏滚动条 */
+
+    .nav-links a {
+        font-size: 0.75rem;
+        white-space: nowrap; /* 禁止换行 */
+    }
+
+    #lang-btn {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+    }
+
+    /* Hero 区块在手机端居中 */
+    .hero {
+        padding: 0 5%;
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-bg {
+        width: 100%;
+        opacity: 0.3; /* 压暗背景突出文字 */
+    }
+    .hero-overlay {
+        background: linear-gradient(0deg, #fff 40%, rgba(255, 255, 255, 0.4) 100%);
+    }
+    .hero-content {
+        margin: 0 auto;
+    }
+
+    /* About 页面左图右文适配 */
+    .story-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px;
+        text-align: center;
+    }
+    
+    .section {
+        padding: 60px 5%;
+    }
 }
 
 /* --- 6. 页脚 --- */
 footer {
     padding: 60px 10%;
-    background: #fff;
-    border-top: 1px solid #f2f2f2;
     text-align: center;
     color: var(--text-sub);
-    font-size: 0.85rem;
-}
-
-/* --- 7. 响应式适配 --- */
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 100px;
-        align-items: flex-start;
-    }
-    .hero-bg {
-        width: 100%;
-        opacity: 0.5; /* 手机端图片变淡，防止干扰文字 */
-    }
-    .hero-overlay {
-        background: linear-gradient(0deg, #fff 40%, rgba(255,255,255,0.4) 100%);
-    }
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    nav {
-        width: 95%;
-        padding: 10px 18px;
-    }
-    .nav-links {
-        display: none; /* 手机端隐藏菜单，建议后续加个汉堡按钮 */
-    }
+    font-size: 0.8rem;
+    border-top: 1px solid #f2f2f2;
 }
