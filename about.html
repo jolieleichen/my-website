@@ -7,48 +7,135 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root { --primary: #000; --accent: #0071e3; --text-sub: #86868b; --glass: rgba(255,255,255,0.75); --transition: all 0.5s cubic-bezier(0.28,0.11,0.32,1); }
+        :root {
+            --primary: #000000;
+            --accent: #0071e3;
+            --text-sub: #86868b;
+            --glass: rgba(255, 255, 255, 0.75);
+            --transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; color: var(--primary); background: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
-        nav { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 10px 24px; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 1000; border-radius: 40px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-        .logo-container img { height: 28px; width: auto; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--primary);
+            background: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 导航栏 (全站统一) --- */
+        nav {
+            position: fixed;
+            top: 24px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%; max-width: 1100px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 24px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .logo-container img { height: 28px; width: auto; display: block; }
+
         .nav-links { display: flex; list-style: none; gap: 32px; }
-        .nav-links a { text-decoration: none; color: var(--primary); font-size: 0.85rem; font-weight: 500; opacity: 0.7; transition: var(--transition); }
+        .nav-links a {
+            text-decoration: none; color: var(--primary);
+            font-size: 0.85rem; font-weight: 500; opacity: 0.7;
+            transition: var(--transition);
+        }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
-        #lang-btn { background: var(--primary); color: white; border: none; padding: 7px 18px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
 
-        .hero { height: 35vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 10%; background: #fff; text-align: center; padding-top: 100px; }
-        .hero h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: -0.04em; }
+        #lang-btn {
+            background: var(--primary); color: white;
+            border: none; padding: 7px 18px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            transition: var(--transition);
+        }
 
+        /* --- Hero 区块 (纯白极简) --- */
+        .hero {
+            height: 35vh; width: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 0 10%; background: #fff; text-align: center;
+            padding-top: 100px; /* 为悬浮导航留出空间 */
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: -0.04em; }
+
+        /* --- 核心内容区块 --- */
         .section { padding: 60px 10% 100px; }
         .container { max-width: 1100px; margin: 0 auto; }
-        .story-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
+
+        /* --- 关键改动：左文字右图片布局 --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; /* 文字占1.2份，图片占1份 */
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
         .story-text { text-align: left; }
         .story-text h2 { font-size: 2.2rem; margin-bottom: 30px; font-weight: 700; }
         .story-text p { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; margin-bottom: 25px; }
-        .story-image { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.06); border: 1px solid #f2f2f2; }
-        .story-image img { width: 100%; height: auto; display: block; object-fit: cover; }
 
-        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
-        .value-card { padding: 48px 40px; background: #fbfbfb; border-radius: 24px; border: 1px solid #f2f2f2; transition: var(--transition); }
+        /* 右侧图片样式 */
+        .story-image {
+            width: 100%;
+            border-radius: 24px; /* 精致的圆角 */
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06); /* 软阴影，增加浮动感 */
+            border: 1px solid #f2f2f2;
+            transition: var(--transition);
+        }
+        .story-image:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 25px 60px rgba(0,0,0,0.08); }
+
+        .story-image img {
+            width: 100%; height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- 价值观卡片 --- */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        .value-card {
+            padding: 48px 40px; background: #fbfbfb; border-radius: 24px;
+            border: 1px solid #f2f2f2; transition: var(--transition);
+        }
+        .value-card:hover { transform: translateY(-8px); background: #fff; border-color: #e5e5e7; box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
         .value-card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 24px; display: block; }
+        .value-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+        .value-card p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; }
 
         footer { padding: 60px 10%; text-align: center; color: var(--text-sub); font-size: 0.8rem; border-top: 1px solid #f2f2f2; }
 
+        /* 移动端适配 */
         @media (max-width: 768px) {
-            nav { width: 95%; top: 12px; padding: 10px 18px; }
-            .nav-links { display: none; }
             .story-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .story-text { text-align: center; }
             .values-grid { grid-template-columns: 1fr; }
             .hero { height: 45vh; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="logo-container"><a href="index.html"><img src="logo.png" alt="InnoCap Logo"></a></div>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.png" alt="Hangzhou InnoCap Logo"></a>
+        </div>
         <ul class="nav-links">
             <li><a href="index.html" data-i18n="nav_home">Home</a></li>
             <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
@@ -57,52 +144,90 @@
         </ul>
         <button id="lang-btn">中文</button>
     </nav>
-    <header class="hero"><h1 data-i18n="about_hero_title">Our Mission</h1></header>
+
+    <header class="hero">
+        <h1 data-i18n="about_hero_title">Our Mission</h1>
+    </header>
+
     <section class="section">
         <div class="container story-grid">
             <div class="story-text">
                 <h2 data-i18n="history_title">Our Story</h2>
-                <p data-i18n="history_p1">Hangzhou InnoCap Specialty Materials Ltd. was founded with a singular vision: to bridge the gap between high-tech material science and practical industrial applications.</p>
-                <p data-i18n="history_p2">Headquartered in the heart of Hangzhou's tech hub, we have grown into a trusted global partner for advanced manufacturing.</p>
+                <p data-i18n="history_p1">Hangzhou InnoCap Specialty Materials Ltd. was founded with a singular vision: to bridge the gap between high-tech material science and practical industrial applications. We specialize in developing next-generation materials that redefine efficiency and sustainability.</p>
+                <p data-i18n="history_p2">Headquartered in the heart of Hangzhou's tech hub, we have grown into a trusted global partner, providing critical solutions for advanced manufacturing, electronics, and green energy sectors.</p>
             </div>
-            <div class="story-image"><img src="image/factory.png" alt="Factory"></div>
+            <div class="story-image">
+                <img src="image/factory.png" alt="Hangzhou InnoCap Specialty Materials Factory" onerror="this.src='https://via.placeholder.com/600x400?text=Please+upload+image/factory.png'">
+            </div>
         </div>
+
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 50px;" data-i18n="values_title">Core Values</h2>
             <div class="values-grid">
-                <div class="value-card"><i class="fa-solid fa-microscope"></i><h3 data-i18n="v1_title">Precision</h3><p data-i18n="v1_desc">Highest standards in quality control.</p></div>
-                <div class="value-card"><i class="fa-solid fa-leaf"></i><h3 data-i18n="v2_title">Sustainability</h3><p data-i18n="v2_desc">Eco-friendly manufacturing processes.</p></div>
-                <div class="value-card"><i class="fa-solid fa-handshake"></i><h3 data-i18n="v3_title">Partnership</h3><p data-i18n="v3_desc">Co-creating solutions with clients.</p></div>
+                <div class="value-card">
+                    <i class="fa-solid fa-microscope"></i>
+                    <h3 data-i18n="v1_title">Precision</h3>
+                    <p data-i18n="v1_desc">Every milligram counts. We maintain the highest standards in material consistency and quality control.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3 data-i18n="v2_title">Sustainability</h3>
+                    <p data-i18n="v2_desc">Innovation shouldn't cost the Earth. We prioritize eco-friendly manufacturing processes.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3 data-i18n="v3_title">Partnership</h3>
+                    <p data-i18n="v3_desc">We don't just sell materials; we co-create solutions tailored to our clients' unique challenges.</p>
+                </div>
             </div>
         </div>
     </section>
-    <footer><p>© 2026 Hangzhou InnoCap Specialty Materials Ltd. ALL RIGHTS RESERVED.</p></footer>
+
+    <footer>
+        <p>© 2026 Hangzhou InnoCap Specialty Materials Ltd. ALL RIGHTS RESERVED.</p>
+    </footer>
+
     <script>
         const translations = {
             en: {
                 nav_home: "Home", nav_about: "About Us", nav_products: "Products", nav_contact: "Contact",
-                about_hero_title: "Our Mission", history_title: "Our Story",
-                history_p1: "Hangzhou InnoCap Specialty Materials Ltd. was founded to bridge the gap between science and industry.",
-                history_p2: "We are a trusted global partner for advanced manufacturing.",
-                values_title: "Core Values", v1_title: "Precision", v1_desc: "Highest standards in quality control.",
-                v2_title: "Sustainability", v2_desc: "Eco-friendly manufacturing processes.",
-                v3_title: "Partnership", v3_desc: "Co-creating solutions with clients.", btn: "中文"
+                about_hero_title: "Our Mission",
+                history_title: "Our Story",
+                history_p1: "Hangzhou InnoCap Specialty Materials Ltd. was founded with a singular vision: to bridge the gap between high-tech material science and practical industrial applications.",
+                history_p2: "Headquartered in the heart of Hangzhou's tech hub, we have grown into a trusted global partner across multiple industrial sectors.",
+                values_title: "Core Values",
+                v1_title: "Precision", v1_desc: "Every milligram counts. We maintain the highest standards in material consistency and quality control.",
+                v2_title: "Sustainability", v2_desc: "Innovation shouldn't cost the Earth. We prioritize eco-friendly manufacturing processes.",
+                v3_title: "Partnership", v3_desc: "We don't just sell materials; we co-create solutions tailored to our clients' unique challenges.",
+                btn: "中文"
             },
             zh: {
                 nav_home: "首页", nav_about: "关于我们", nav_products: "核心产品", nav_contact: "联系我们",
-                about_hero_title: "企业使命", history_title: "品牌故事",
-                history_p1: "杭州英诺凯特种材料有限公司致力于弥合科学与工业之间的鸿沟。",
-                history_p2: "我们是全球先进制造业值得信赖的合作伙伴。",
-                values_title: "核心价值观", v1_title: "精密严谨", v1_desc: "最严格的质量控制标准。",
-                v2_title: "可持续发展", v2_desc: "环保的生产制造工艺。",
-                v3_title: "伙伴关系", v3_desc: "与客户共同创造解决方案。", btn: "English"
+                about_hero_title: "企业使命",
+                history_title: "品牌故事",
+                history_p1: "杭州英诺凯特种材料有限公司（Hangzhou InnoCap Specialty Materials Ltd.）成立的初衷是：弥合高新材料科学与实际工业应用之间的鸿沟。我们专注于开发重新定义效率与可持续性的下一代材料。",
+                history_p2: "总部位于杭州科技核心地带，我们已成长为全球值得信赖的合作伙伴，为先进制造、电子及绿色能源领域提供关键解决方案。",
+                values_title: "核心价值观",
+                v1_title: "精密严谨", v1_desc: "每一毫克都至关重要。我们在材料一致性和质量控制方面保持最高标准。",
+                v2_title: "可持续发展", v2_desc: "创新不应以环境为代价。我们优先考虑环保的制造工艺。",
+                v3_title: "伙伴关系", v3_desc: "我们不仅提供材料，还针对客户的独特挑战共同创造定制化解决方案。",
+                btn: "English"
             }
         };
+
         let currentLang = 'en';
         const langBtn = document.getElementById('lang-btn');
-        langBtn.addEventListener('click', () => { currentLang = currentLang === 'en' ? 'zh' : 'en'; updateLanguage(); });
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            updateLanguage();
+        });
+
         function updateLanguage() {
-            document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); el.textContent = translations[currentLang][key]; });
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = translations[currentLang][key];
+            });
             langBtn.textContent = translations[currentLang].btn;
             document.documentElement.lang = currentLang;
         }
