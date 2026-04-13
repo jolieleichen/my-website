@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Hangzhou InnoCap Specialty Materials Ltd.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #0071e3;
+            --text-sub: #86868b;
+            --glass: rgba(255, 255, 255, 0.75);
+            --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--primary);
+            background: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 导航栏 (全站统一) --- */
+        nav {
+            position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1100px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 24px; background: var(--glass);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 1000; border-radius: 40px; border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .logo-container img { height: 28px; width: auto; display: block; }
+        .nav-links { display: flex; list-style: none; gap: 32px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-size: 0.85rem; font-weight: 500; opacity: 0.7; transition: var(--transition); }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
+        #lang-btn { background: var(--primary); color: white; border: none; padding: 7px 18px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+
+        /* --- Header --- */
+        .contact-header { padding: 160px 10% 60px; background: #fff; text-align: center; }
+        .contact-header h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; letter-spacing: -0.04em; margin-bottom: 15px; }
+        .contact-header p { color: var(--text-sub); font-size: 1.1rem; }
+
+        /* --- Main Content --- */
+        .section { padding: 40px 10% 100px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; max-width: 1100px; margin: 0 auto; }
+
+        .info-item { margin-bottom: 40px; }
+        .info-item i { font-size: 1.5rem; color: var(--accent); margin-bottom: 15px; display: block; }
+        .info-item h3 { font-size: 1.2rem; margin-bottom: 8px; font-weight: 600; }
+        .info-item p { color: var(--text-sub); font-size: 1rem; line-height: 1.6; }
+
+        /* --- Form 容器 --- */
+        .form-container { 
+            background: #fff; padding: 48px; border-radius: 32px; 
+            border: 1px solid #f2f2f2; box-shadow: 0 10px 40px rgba(0,0,0,0.02); 
+        }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: #555; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 15px; border: 1px solid #e5e5e7; border-radius: 14px;
+            font-family: inherit; font-size: 1rem; background: #fdfdfd; transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { 
+            outline: none; border-color: var(--accent); background: #fff; 
+            box-shadow: 0 0 0 4px rgba(0,113,227,0.08); 
+        }
+
+        .submit-btn {
+            width: 100%; background: var(--primary); color: #fff; padding: 18px;
+            border: none; border-radius: 14px; font-size: 1rem; font-weight: 600; 
+            cursor: pointer; transition: var(--transition);
+        }
+        .submit-btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,113,227,0.15); }
+
+        footer { padding: 60px 10%; text-align: center; color: var(--text-sub); font-size: 0.8rem; border-top: 1px solid #f2f2f2; }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+            .contact-header { padding-top: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.png" alt="InnoCap Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="products.html" data-i18n="nav_products">Products</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <button id="lang-btn">中文</button>
+    </nav>
+
+    <header class="contact-header">
+        <h1 data-i18n="contact_h1">Connect With Us</h1>
+        <p data-i18n="contact_sub">Our specialists are ready to help you with tailored material solutions.</p>
+    </header>
+
+    <section class="section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3 data-i18n="info_loc">Headquarters</h3>
+                    <p data-i18n="info_loc_val">Hangzhou Tech Hub, Zhejiang, China</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3 data-i18n="info_mail">Email Inquiry</h3>
+                    <p>contact@innocap.com</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3 data-i18n="info_phone">Business Phone</h3>
+                    <p>+86 (0571) 1234 5678</p>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <form action="https://formspree.io/f/xzdypozv" method="POST">
+                    <div class="form-group">
+                        <label data-i18n="form_name">Full Name</label>
+                        <input type="text" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_email">Work Email</label>
+                        <input type="email" name="email" required placeholder="email@company.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-i18n="form_service">Interest Area</label>
+                        <select name="interest" required>
+                            <option value="" disabled selected data-i18n="opt_placeholder">Select a category</option>
+                            <option value="Textiles (mPCM Slurry/Powder)" data-i18n="opt_1">Textiles (mPCM Slurry/Powder)</option>
+                            <option value="Electronics (mPCM Powder)" data-i18n="opt_2">Electronics (mPCM Powder)</option>
+                            <option value="Fragrance Microencapsulation" data-i18n="opt_3">Fragrance Microencapsulation</option>
+                            <option value="Photochromic Microcapsules" data-i18n="opt_4">Photochromic Materials</option>
+                            <option value="Building Related mPCM" data-i18n="opt_5">Building Related mPCM</option>
+                            <option value="Agrochemical Microcapsules" data-i18n="opt_6">Agrochemical Microcapsules</option>
+                            <option value="Fastener Microcapsules" data-i18n="opt_7">Fastener Microcapsules</option>
+                            <option value="General Inquiry" data-i18n="opt_8">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="form_msg">Project Details</label>
+                        <textarea name="message" rows="4" placeholder="Briefly describe your requirements..."></textarea>
+                    </div>
+
+                    <input type="hidden" name="_subject" value="New Inquiry - Hangzhou InnoCap Website">
+                    <button type="submit" class="submit-btn" data-i18n="form_submit">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Hangzhou InnoCap Specialty Materials Ltd. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                nav_home: "Home", nav_about: "About Us", nav_products: "Products", nav_contact: "Contact",
+                contact_h1: "Connect With Us", contact_sub: "Our specialists are ready to help you with tailored material solutions.",
+                info_loc: "Headquarters", info_loc_val: "Hangzhou Tech Hub, Zhejiang, China",
+                info_mail: "Email Inquiry", info_phone: "Business Phone",
+                form_name: "Full Name", form_email: "Work Email", form_service: "Interest Area",
+                form_msg: "Project Details", form_submit: "Submit Application",
+                opt_placeholder: "Select a category",
+                opt_1: "Textiles (mPCM Slurry/Powder)", opt_2: "Electronics (mPCM Powder)",
+                opt_3: "Fragrance Microencapsulation", opt_4: "Photochromic Materials",
+                opt_5: "Building Related mPCM", opt_6: "Agrochemical Microcapsules",
+                opt_7: "Fastener Microcapsules", opt_8: "General Inquiry",
+                btn: "中文"
+            },
+            zh: {
+                nav_home: "首页", nav_about: "关于我们", nav_products: "核心产品", nav_contact: "联系我们",
+                contact_h1: "联系我们", contact_sub: "我们的专家随时准备为您提供量身定制的材料解决方案。",
+                info_loc: "总部地址", info_loc_val: "中国·浙江 杭州科技园区",
+                info_mail: "业务咨询", info_phone: "商务电话",
+                form_name: "姓名", form_email: "工作邮箱", form_service: "意向产品领域",
+                form_msg: "项目需求详情", form_submit: "提交申请",
+                opt_placeholder: "请选择产品分类",
+                opt_1: "纺织类 (mPCM 乳液/粉末)", opt_2: "电子类 (mPCM 粉末)",
+                opt_3: "日化香精微胶囊", opt_4: "光变/感光材料",
+                opt_5: "建筑相关 mPCM", opt_6: "农药微胶囊",
+                opt_7: "紧固件微胶囊", opt_8: "一般咨询",
+                btn: "English"
+            }
+        };
+
+        let currentLang = 'en';
+        const langBtn = document.getElementById('lang-btn');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            updateLanguage();
+        });
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (el.tagName === 'OPTION') { el.text = translations[currentLang][key]; } 
+                else { el.textContent = translations[currentLang][key]; }
+            });
+            langBtn.textContent = translations[currentLang].btn;
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>

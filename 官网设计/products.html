@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Hangzhou InnoCap Specialty Materials Ltd.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #0071e3;
+            --text-sub: #86868b;
+            --bg-light: #fbfbfb;
+            --glass: rgba(255, 255, 255, 0.75);
+            --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--primary);
+            background: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 1. 导航栏 --- */
+        nav {
+            position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1100px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 24px; background: var(--glass);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 1000; border-radius: 40px; border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .logo-container img { height: 28px; width: auto; display: block; }
+        .nav-links { display: flex; list-style: none; gap: 32px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-size: 0.85rem; font-weight: 500; opacity: 0.7; transition: var(--transition); }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
+        #lang-btn { background: var(--primary); color: white; border: none; padding: 7px 18px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+
+        /* --- 2. Hero --- */
+        .hero { padding: 160px 10% 60px; text-align: center; background: #fff; }
+        .hero h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 10px; }
+        .hero p { color: var(--text-sub); font-size: 1.1rem; }
+
+        /* --- 3. 产品分类容器 --- */
+        .products-section { padding: 40px 10% 100px; max-width: 1300px; margin: 0 auto; }
+
+        .category-group { margin-bottom: 80px; }
+        .category-title { 
+            font-size: 1.8rem; font-weight: 700; margin-bottom: 30px; 
+            padding-bottom: 10px; border-bottom: 2px solid #f2f2f2;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .category-title span { color: var(--accent); font-size: 0.9rem; font-weight: 400; text-transform: uppercase; }
+
+        /* 产品网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: #fbfbfb;
+            border: 1px solid #f2f2f2;
+            border-radius: 20px;
+            padding: 35px;
+            transition: var(--transition);
+            display: flex; flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            background: #fff;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        .product-card h3 { font-size: 1.3rem; margin-bottom: 12px; font-weight: 600; }
+        .product-card p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; }
+        
+        .spec-tag {
+            display: inline-block; padding: 4px 10px; background: #eee;
+            border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: #555;
+            margin-right: 8px; margin-bottom: 8px;
+        }
+
+        .cta-btn {
+            text-decoration: none; color: var(--accent); font-weight: 600; 
+            font-size: 0.9rem; margin-top: auto;
+        }
+        .cta-btn:hover { text-decoration: underline; }
+
+        footer { padding: 60px 10%; text-align: center; color: var(--text-sub); font-size: 0.8rem; border-top: 1px solid #f2f2f2; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.png" alt="InnoCap Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+            <li><a href="products.html" data-i18n="nav_products">Products</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <button id="lang-btn">中文</button>
+    </nav>
+
+    <header class="hero">
+        <h1 data-i18n="p_hero_title">Advanced Microencapsulation</h1>
+        <p data-i18n="p_hero_sub">Innovative specialty materials for diverse industrial applications.</p>
+    </header>
+
+    <main class="products-section">
+        
+        <div class="category-group">
+            <h2 class="category-title"><span data-i18n="cat_1_tag">Category 01</span> <span data-i18n="cat_1">Textiles</span></h2>
+            <div class="grid">
+                <div class="product-card">
+                    <div>
+                        <h3>mPCM Slurry</h3>
+                        <p data-i18n="p1_desc">High-efficiency microencapsulated phase change material in liquid form for textile coating and finishing.</p>
+                        <div class="spec-tag">Textile Grade</div><div class="spec-tag">Water-based</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+                <div class="product-card">
+                    <div>
+                        <h3>mPCM Powder</h3>
+                        <p data-i18n="p2_desc">Dry powder mPCM for fiber spinning and advanced functional textile applications.</p>
+                        <div class="spec-tag">High Enthalpy</div><div class="spec-tag">Micron-sized</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <h2 class="category-title"><span data-i18n="cat_2_tag">Category 02</span> <span data-i18n="cat_2">Electronics</span></h2>
+            <div class="grid">
+                <div class="product-card">
+                    <div>
+                        <h3>mPCM Powder (Electronic Grade)</h3>
+                        <p data-i18n="p3_desc">Specially formulated for thermal management in electronic components and batteries.</p>
+                        <div class="spec-tag">Thermal Management</div><div class="spec-tag">Stable</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <h2 class="category-title"><span data-i18n="cat_3_tag">Category 03</span> <span data-i18n="cat_3">Fragrance</span></h2>
+            <div class="grid">
+                <div class="product-card">
+                    <div>
+                        <h3>Fragrance Microencapsulated</h3>
+                        <p data-i18n="p4_desc">Long-lasting scent release technology for home care, personal care, and industrial use.</p>
+                        <div class="spec-tag">Sustained Release</div><div class="spec-tag">Multi-scent</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <h2 class="category-title"><span data-i18n="cat_4_tag">Category 04</span> <span data-i18n="cat_4">Photochromic</span></h2>
+            <div class="grid">
+                <div class="product-card">
+                    <div>
+                        <h3 data-i18n="cat_4_h">Photochromic Microcapsules</h3>
+                        <p data-i18n="p5_desc">Light-sensitive color-changing materials for security printing, fashion, and optics.</p>
+                        <div class="spec-tag">UV Sensitive</div><div class="spec-tag">Fast Response</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <h2 class="category-title"><span data-i18n="cat_5_tag">Category 05</span> <span data-i18n="cat_5">Building & Construction</span></h2>
+            <div class="grid">
+                <div class="product-card">
+                    <div>
+                        <h3 data-i18n="cat_5_h">Building mPCM Microcapsules</h3>
+                        <p data-i18n="p6_desc">Thermal energy storage solutions for smart buildings, coatings, and insulation materials.</p>
+                        <div class="spec-tag">Energy Saving</div><div class="spec-tag">Construction</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <h2 class="category-title"><span data-i18n="cat_6_tag">Category 06-07</span> <span data-i18n="cat_67">Specialty Applications</span></h2>
+            <div class="grid">
+                <div class="product-card">
+                    <div>
+                        <h3 data-i18n="cat_6_h">Agrochemical Microcapsules</h3>
+                        <p data-i18n="p7_desc">Controlled release for pesticides to enhance efficiency and environmental safety.</p>
+                        <div class="spec-tag">Agriculture</div><div class="spec-tag">Slow Release</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+                <div class="product-card">
+                    <div>
+                        <h3 data-i18n="cat_7_h">Fastener Microcapsules</h3>
+                        <p data-i18n="p8_desc">Encapsulated adhesives for pre-applied thread locking and sealing in fasteners.</p>
+                        <div class="spec-tag">Industrial</div><div class="spec-tag">Adhesive</div>
+                    </div>
+                    <a href="contact.html" class="cta-btn" data-i18n="p_cta">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Hangzhou InnoCap Specialty Materials Ltd. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                nav_home: "Home", nav_about: "About Us", nav_products: "Products", nav_contact: "Contact",
+                p_hero_title: "Advanced Microencapsulation",
+                p_hero_sub: "Innovative specialty materials for diverse industrial applications.",
+                cat_1: "Textiles", cat_2: "Electronics", cat_3: "Fragrance", cat_4: "Photochromic", cat_5: "Building Related", cat_67: "Specialty Applications",
+                cat_4_h: "Photochromic Microcapsules", cat_5_h: "Building mPCM Microcapsules", cat_6_h: "Agrochemical Microcapsules", cat_7_h: "Fastener Microcapsules",
+                p1_desc: "High-efficiency mPCM in liquid form for textile coating.",
+                p2_desc: "Dry powder mPCM for fiber spinning and advanced textiles.",
+                p3_desc: "Formulated for thermal management in electronics and batteries.",
+                p4_desc: "Long-lasting scent release technology for home and personal care.",
+                p5_desc: "Light-sensitive color-changing materials for security and fashion.",
+                p6_desc: "Thermal energy storage solutions for smart buildings and insulation.",
+                p7_desc: "Controlled release for pesticides to enhance safety and efficiency.",
+                p8_desc: "Encapsulated adhesives for thread locking and sealing.",
+                p_cta: "Inquire Now", btn: "中文"
+            },
+            zh: {
+                nav_home: "首页", nav_about: "关于我们", nav_products: "核心产品", nav_contact: "联系我们",
+                p_hero_title: "先进微胶囊技术",
+                p_hero_sub: "为多样化的工业应用提供创新特种材料。",
+                cat_1: "纺织类", cat_2: "电子类", cat_3: "日化香精", cat_4: "光变微胶囊", cat_5: "建筑相关", cat_67: "特殊应用",
+                cat_4_h: "光变微胶囊", cat_5_h: "建筑用 mPCM 微胶囊", cat_6_h: "农药微胶囊", cat_7_h: "紧固件微胶囊",
+                p1_desc: "用于纺织涂层和整理的高效液态微胶囊相变材料。",
+                p2_desc: "用于纤维纺丝和功能性纺织品的干粉态 mPCM。",
+                p3_desc: "专为电子元件和电池的热管理而开发。",
+                p4_desc: "用于家居护理、个人护理和工业领域的长效释香技术。",
+                p5_desc: "用于防伪印刷、时尚和光学领域的感光变色材料。",
+                p6_desc: "用于智能建筑、涂料和保温材料的热能储存解决方案。",
+                p7_desc: "农药的受控释放，提高效率并增强环境安全性。",
+                p8_desc: "用于紧固件预涂螺纹锁固和密封的胶囊化粘合剂。",
+                p_cta: "立即咨询", btn: "English"
+            }
+        };
+
+        let currentLang = 'en';
+        const langBtn = document.getElementById('lang-btn');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            updateLanguage();
+        });
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = translations[currentLang][key];
+            });
+            langBtn.textContent = translations[currentLang].btn;
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>
